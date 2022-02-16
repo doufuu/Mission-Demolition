@@ -639,6 +639,7 @@ GameObject:
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
   - component: {fileID: 963194229}
+  - component: {fileID: 963194230}
   m_Layer: 0
   m_Name: _MainCamera
   m_TagString: MainCamera
@@ -726,6 +727,25 @@ MonoBehaviour:
   easing: 0.05
   minXY: {x: 0, y: 0}
   camZ: 0
+--- !u!114 &963194230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f4b27f8a5d9a754faa5f793b197939c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numberOfClouds: 40
+  cloudPrefab: {fileID: 7122152758103137242, guid: 547c12fc02fb44d43b6a1587da68b41c, type: 3}
+  cloudPositionMin: {x: -50, y: -5, z: 10}
+  cloudPositionMax: {x: 150, y: 100, z: 10}
+  cloudScaleMin: 1
+  cloudScaleMax: 3
+  cloudSpeedMultiplier: 0.5
 --- !u!1 &1612629100
 GameObject:
   m_ObjectHideFlags: 0

@@ -51,9 +51,15 @@ public class CloudCrafter : MonoBehaviour
             float scaleU = Random.value;
             float scaleVal = Mathf.Lerp(cloudScaleMin, cloudScaleMax, scaleU);
 
-            cPos.y = Mathf.Lerp(cloudPositionMin.y, cloudSpeedMultiplier.y, scaleU); //smaller clouds with smaller scale closer to the ground
 
 
+            cPos.y = Mathf.Lerp(cloudPositionMin.y, cPos.y, scaleU); //smaller clouds with smaller scale closer to the ground
+            cPos.z = 100 - 90 * scaleU; // Smaller clouds should be further away
+            cloud.transform.position = cPos; // Apply these transforms to the cloud
+            cloud.transform.localScale = Vector3.one * scaleVal;
+            cloud.transform.SetParent(anchor.transform); // Make cloud a child of the anchor
+
+            cloudInstances[i] = cloud; // Add the cloud to cloudInstances
 
 
 
@@ -74,6 +80,21 @@ public class CloudCrafter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        // Iterate over each cloud that was created
+            foreach (GameObject cloud in cloudInstances)
+        {
+            // Get the cloud scale and position
+            float scaleVal = cloud.transform.localScale.x; 
+            Vector3 cPos = cloud.transform.position;
+            // Move larger clouds faster
+            cPos.x -= scaleVal * Time.deltaTime * cloudSpeedMultiplier; // If a cloud has moved too far to the left...
+            if (cPos.x <= cloudPositionMin.x)
+            {
+                // Move it to the far right
+                cPos.x = cloudPositionMax.x;
+            }
+            // Apply the new position to cloud
+             cloud.transform.position = cPos;
+        } 
     }
-}
+    }
