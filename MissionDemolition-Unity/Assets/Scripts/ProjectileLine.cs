@@ -46,7 +46,7 @@ public class ProjectileLine : MonoBehaviour
         }
     }
 
-    public void clear() 
+    public void Clear() 
     
     {
         _poi = null;
@@ -76,7 +76,7 @@ public class ProjectileLine : MonoBehaviour
         {
             points.Add(pt);
             line.positionCount = points.Count;
-            line.SetPosition(points.Count - 1, lastPoint);
+            line.SetPosition(points.Count-1, lastPoint);
             line.enabled = true;
         }
 
@@ -91,7 +91,7 @@ public class ProjectileLine : MonoBehaviour
                 return (Vector3.zero);
             }
             
-            return (points[points.Count - 1]);
+            return (points[points.Count-1]);
         }
     }
 
@@ -104,12 +104,12 @@ public class ProjectileLine : MonoBehaviour
             {
                 if (FollowCam.POI.tag == "Projectile")
                     poi = FollowCam.POI;
-            }
-            else return;
 
+                else return;
+            }   
+         else return;
 
         }
-        else return;
 
         AddPoint();
         if (FollowCam.POI == null)
